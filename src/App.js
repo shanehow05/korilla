@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import receipt from './components/Receipt';
+import {receipt1, receipt2, receipt3,rec} from './components/Records'
+import Header from './components/Header';
+import Receipt from './components/Receipt';
+import {useState} from 'react'
 import './App.css';
 
+
 function App() {
+  const [receipts, setReceipts] = useState([receipt1, receipt2, receipt3, ...rec])
+  const mappedReceipts = receipts.map((receipt, index)=> {
+    return <Receipt receipt = {receipt} key=' '></Receipt>
+  })
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+     {mappedReceipts}
+
+
     </div>
   );
 }
